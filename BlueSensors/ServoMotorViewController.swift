@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ServoMotorViewController.swift
 //  BlueSensors
 //
 //  Created by Carlos Duclos on 4/17/18.
@@ -13,7 +13,7 @@ enum MotorPosition: UInt8 {
     case initial = 1, neutral, opened
 }
 
-class ViewController: UIViewController {
+class ServoMotorViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -56,7 +56,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: CBCentralManagerDelegate {
+extension ServoMotorViewController: CBCentralManagerDelegate {
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         
@@ -97,7 +97,7 @@ extension ViewController: CBCentralManagerDelegate {
     
 }
 
-extension ViewController: CBPeripheralDelegate {
+extension ServoMotorViewController: CBPeripheralDelegate {
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         guard let services = peripheral.services else { return }
