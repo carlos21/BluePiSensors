@@ -10,29 +10,10 @@ import UIKit
 
 final class SensorsViewController: UITableViewController {
     
-    enum Sensor {
-        case servoMotor, DHT11, DHT22
-        
-        var title: String {
-            switch self {
-            case .servoMotor: return "Servo Motor"
-            case .DHT11: return "DHT11"
-            case .DHT22: return "DHT22"
-            }
-        }
-        
-        var segueIdentifier: String {
-            switch self {
-            case .servoMotor: return "showServoMotor"
-            case .DHT22, .DHT11: return "showTemperature"
-            }
-        }
-    }
-    
     // MARK: - Properties
     
     let cellIdentifier = "sensorCell"
-    var sensors: [Sensor] = [.servoMotor, .DHT22]
+    var sensors: [Sensor] = [.DHT22]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,5 +36,26 @@ final class SensorsViewController: UITableViewController {
         let sensor = sensors[indexPath.row]
         performSegue(withIdentifier: sensor.segueIdentifier, sender: self)
     }
+}
+
+extension SensorsViewController {
     
+    enum Sensor {
+        case servoMotor, DHT11, DHT22
+        
+        var title: String {
+            switch self {
+            case .servoMotor: return "Servo Motor"
+            case .DHT11: return "DHT11"
+            case .DHT22: return "DHT22"
+            }
+        }
+        
+        var segueIdentifier: String {
+            switch self {
+            case .servoMotor: return "showServoMotor"
+            case .DHT22, .DHT11: return "showTemperature"
+            }
+        }
+    }
 }
